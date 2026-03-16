@@ -30,4 +30,4 @@ RUN mkdir -p /app/data && chown -R appuser:appgroup /app/data
 USER 1001
 
 EXPOSE 8001
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
+CMD ["/bin/sh", "/app/entrypoint.sh"]
