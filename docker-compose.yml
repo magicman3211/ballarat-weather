@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8081:80"
+    networks:
+      - weather-net
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    expose:
+      - "8001"
+    environment:
+      - DATABASE_URL=sqlite:////app/data/weather.db
+    volumes:
+      - weather_data:/app/data
+    networks:
+      - weather-net
+    restart: unless-stopped
+
+networks:
+  weather-net:
+    driver: bridge
+
+volumes:
+  weather_data:
