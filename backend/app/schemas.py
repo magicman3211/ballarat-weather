@@ -21,3 +21,10 @@ class MonthlyStatsResponse(BaseModel):
     avg_max: Optional[float]
     total_rain: Optional[float]
     days_recorded: int
+
+class YearlyStatsResponse(BaseModel):
+    year: str
+    avg_min: Optional[float]
+    avg_max: Optional[float]
+    total_rain: Optional[float]
+    days_recorded: int
